@@ -1,7 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-let num = '';
 
 class App extends React.Component{
 	constructor(props){
