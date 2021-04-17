@@ -19,16 +19,16 @@ class App extends React.Component{
 		let str = this.state.nowInput+event.target.value;
 		let nowStr = this.state.input+event.target.value;
 		let len = nowStr.length;
-		if (str[0] == '0' && str[1] == '.'){
+		if (str[0] === '0' && str[1] === '.'){
 
 		}
-		else if (str[0] == '0' || str[0] == '.' || str[0] == '+' || str[0] == '-' || str[0] == 'x' || str[0] == '/'){
+		else if (str[0] === '0' || str[0] === '.' || str[0] === '+' || str[0] === '-' || str[0] === 'x' || str[0] === '/'){
 			str = str.slice(1,str.length);
 		}
-		if (nowStr[0] == '0' && nowStr[1] == '.'){
+		if (nowStr[0] === '0' && nowStr[1] === '.'){
 			
 		}
-		else if (nowStr[0] == '0' || nowStr[0] == '.' || nowStr[0] == '+' || nowStr[0] == '-' || nowStr[0] == 'x' || nowStr[0] == '/'){
+		else if (nowStr[0] === '0' || nowStr[0] === '.' || nowStr[0] === '+' || nowStr[0] === '-' || nowStr[0] === 'x' || nowStr[0] === '/'){
 			nowStr = nowStr.slice(1,nowStr.length);
 		}
 
@@ -39,10 +39,10 @@ class App extends React.Component{
 
 		this.setState({
 			input:nowStr,
-			nowInput:event.target.value == '+' ?
-			 event.target.value: event.target.value == '-' ?
-			  event.target.value : event.target.value == 'x' ?
-			   event.target.value : event.target.value == '/' ?
+			nowInput:event.target.value === '+' ?
+			 event.target.value: event.target.value === '-' ?
+			  event.target.value : event.target.value === 'x' ?
+			   event.target.value : event.target.value === '/' ?
 			    event.target.value : str,
 		});
 	}
@@ -58,7 +58,7 @@ class App extends React.Component{
 		let answer;
 		let c = 0;
 		let b;
-		if (this.state.input[this.state.input.length-1] == '+' || this.state.input[this.state.input.length-1] == '-' || this.state.input[this.state.input.length-1] == 'x' || this.state.input[this.state.input.length-1] == '/'){
+		if (this.state.input[this.state.input.length-1] === '+' || this.state.input[this.state.input.length-1] === '-' || this.state.input[this.state.input.length-1] === 'x' || this.state.input[this.state.input.length-1] === '/'){
 			 b = this.state.input;
 		}else{
 			 b = this.state.input+'+';}
@@ -68,7 +68,7 @@ class App extends React.Component{
 		}
 		for(let i = 0;i <b.length;i++){
 			
-			if (b[i] == '+' || b[i] == '-' || b[i] == 'x' || b[i] == '/'){
+			if (b[i] === '+' || b[i] === '-' || b[i] === 'x' || b[i] === '/'){
 				obj.num.push(b.slice(c,i));
 				obj.op.push(b.slice(i,i+1));
 				c = i+1;
@@ -78,20 +78,20 @@ class App extends React.Component{
 		obj.num = obj.num.map(d => +d);
 		console.log(obj.num);
 		for(let j = 0;j<obj.op.length;j++){
-			if(obj.op[j] == 'x'){
+			if(obj.op[j] === 'x'){
 				//answer.push(obj.num[j]*obj.num[j+1]); 
 				obj.num.splice(j,2,obj.num[j]*obj.num[j+1],0);
-			}else if (obj.op[j] == '/'){
+			}else if (obj.op[j] === '/'){
 				//answer.push(obj.num[j]/obj.num[j+1]); 
 				obj.num.splice(j,2,obj.num[j]/obj.num[j+1],0);
 			}
 		}
 
 		for(let k = 0;k<obj.op.length;k++){
-			if(obj.op[k] == '+'){
+			if(obj.op[k] === '+'){
 				//answer.push(+obj.num[k]+(+obj.num[k+1])); 
 				obj.num.splice(k,2,+obj.num[k]+(+obj.num[k+1]),0);
-			}else if (obj.op[k] == '-'){
+			}else if (obj.op[k] === '-'){
 				//answer.push(obj.num[k]-obj.num[k+1]); 
 				obj.num.splice(k,2,obj.num[k]-obj.num[k+1],0);
 			}
